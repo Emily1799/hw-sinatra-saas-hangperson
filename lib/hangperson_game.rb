@@ -58,26 +58,21 @@ class HangpersonGame
             ret_str << '-'
         end
      end
-     if ret_str.empty?
-         puts "ret str empty"
-     end
+     
      return ret_str
   end
     
- # def check_win_or_lose
-  #  @word.subset?(@guesses)
-   #  
-  #end
-end
-def guess_several_letters(game, letters)
-  letters.chars do |letter|
-      game.guess(letter)
+    def check_win_or_lose
+        if @word.chars.to_set.subset?(@guesses.chars.to_set)
+            return :win
+        elsif @wrong_guesses.length < 7
+            return :play
+        else
+            return :lose
+        end
     end
-end
 
-game = HangpersonGame.new('banana')
-guess_several_letters(game, "ban")
-puts game.word_with_guesses
+end
 
 
 
