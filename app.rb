@@ -72,15 +72,19 @@ class HangpersonApp < Sinatra::Base
   
   get '/win' do
     ### YOUR CODE HERE ###
-    flash[:message] = "You Win!"
-    erb :win # You may change/remove this line
+    if @game.check_win_or_lose == :win
+      flash[:message] = "You Win!"
+      erb :win # You may change/remove this line
+    end
   end
   
   get '/lose' do
     ### YOUR CODE HERE ###
-    flash[:message] = "Sorry, you lose!"
+    if @game.check_win_or_lose == :lose
+      flash[:message] = "Sorry, you lose!"
+      erb :lose # You may change/remove this line
+    end
   
-    erb :lose # You may change/remove this line
   end
   
 end
