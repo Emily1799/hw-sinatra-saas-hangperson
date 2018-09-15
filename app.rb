@@ -75,6 +75,8 @@ class HangpersonApp < Sinatra::Base
     if @game.check_win_or_lose == :win
       flash[:message] = "You Win!"
       erb :win # You may change/remove this line
+    else
+        redirect '/show'
     end
   end
   
@@ -83,6 +85,8 @@ class HangpersonApp < Sinatra::Base
     if @game.check_win_or_lose == :lose
       flash[:message] = "Sorry, you lose!"
       erb :lose # You may change/remove this line
+    else
+        redirect '/show'
     end
   
   end
